@@ -1,14 +1,29 @@
 import math
 
+def transpose(matrix):
+    m = new_matrix()
+    for r in range(4):
+        for c in range(4):
+            m[r][c] = matrix[c][r];
+    return m;
+
 def make_bezier():
-    pass
+    b = [[-1,3,-3,1],[3,-6,3,0],[-3,3,0,0],[1,0,0,0]]
+    return transpose(b)
+    
 
 def make_hermite():
-    pass
+    h = [[2,-2,1,1],[-3,3,-2,1],[0,0,1,0],[1,0,0,0]]
+    return transpose(h)
 
 def generate_curve_coefs( p1, p2, p3, p4, t ):
-    pass
-
+    p = [[p1],[p2],[p3],[p4]]
+    if t == "hermite":
+        return [p,make_hermite()]
+    elif t == "bezier":
+        return [p,make_bezier()]
+    else:
+        return [p,["CHECK INPUT"]]
 
 def make_translate( x, y, z ):
     t = new_matrix()
@@ -97,3 +112,5 @@ def new_matrix(rows = 4, cols = 4):
         for r in range( rows ):
             m[c].append( 0 )
     return m
+
+generate_curve_coefs(1,2,4,5,"hermite");
