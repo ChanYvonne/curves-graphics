@@ -1,23 +1,37 @@
 from display import *
 from matrix import *
 
-
 def add_circle( points, cx, cy, cz, r, step ):
-    prevx = cx
+    prevx = cx + r
     prevy = cy
-    t = 0
+    
+    t = step
     while t <= 1:
-        x = t*math.cos(t)+cx
-        y = t*math.sin(t)+cy
+        x = r*(math.cos(2*math.pi*t))+cx
+        y = r*(math.sin(2*math.pi*t))+cy
         add_edge(points, prevx, prevy, cz, x, y, cz)
         prevx = x
         prevy = y
+        t+=step
     
 
 def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
-    if curve_type == "hermite":
-    elif curve_type == "bezier":
-    else:
+    coefx = generate_curve_coefs(x0, x1, x2, x3, curve_type)
+    coefy = generate_curve_coefs(y0, y1, y2, y3, curve_type)
+    
+    prevx = coefx[3]
+    prevy = coefy[3]
+    print prevx
+    print prevy
+    
+    t = step
+    while t <= 1:
+        x = coefx[0]*math.pow(t,3) + coefx[1]*math.pow(t,2) + coefx[2]*t + coefx[3]
+        y = coefy[0]*math.pow(t,3) + coefy[1]*math.pow(t,2) + coefy[2]*t + coefy[3]
+        add_edge(points, prevx, prevy, 0, x, y, 0)
+        t+=step
+        prevx = x
+        prevy = y
 
 
 

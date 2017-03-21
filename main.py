@@ -44,7 +44,7 @@ The file follows the following format:
 
 See the file script for an example of the file format
 """
-ARG_COMMANDS = [ 'line', 'scale', 'move', 'rotate', 'save' ]
+ARG_COMMANDS = [ 'line', 'scale', 'move', 'rotate', 'save', 'circle', 'bezer', 'hermite']
 
 def parse_file( fname, edges, transform, screen, color ):
 
@@ -95,11 +95,19 @@ def parse_file( fname, edges, transform, screen, color ):
         elif line == 'apply':
             matrix_mult( transform, edges )
 
+        elif line == 'circle':
+            add_circle(edges, int(args[0]), int(args[1]), int(args[2]), int(args[3]), 0.001)
+            
+        elif line == 'hermite' or line == 'bezier':
+            add_curve(edges, int(args[0]), int(args[1]), int(args[2]), int(args[3]), int(args[4]), int(args[5]), int(args[6]), int(args[7]), 0.001, line);
+            
         elif line == 'display' or line == 'save':
             clear_screen(screen)
             draw_lines(edges, screen, color)
-            save_ppm(screen, args[0])
-            
+            if line == 'save':
+                save_ppm(screen, args[0])
+            else:
+                save_ppm(screen, 'pic.ppm')
         c+= 1
 
 
