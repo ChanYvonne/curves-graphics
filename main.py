@@ -100,6 +100,7 @@ def parse_file( fname, edges, transform, screen, color ):
             
         elif line == 'hermite' or line == 'bezier':
             add_curve(edges, int(args[0]), int(args[1]), int(args[2]), int(args[3]), int(args[4]), int(args[5]), int(args[6]), int(args[7]), 0.001, line);
+            #add_curve(edges, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], 0.001, line);
             
         elif line == 'display' or line == 'save':
             clear_screen(screen)

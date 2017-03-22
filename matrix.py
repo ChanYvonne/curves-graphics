@@ -9,12 +9,12 @@ def transpose(matrix):
 
 def make_bezier():
     b = [[-1,3,-3,1],[3,-6,3,0],[-3,3,0,0],[1,0,0,0]]
-    return transpose(b)
+    return b
     
 
 def make_hermite():
-    t = [[2,-3,0,1],[-2,3,0,0],[1,-2,1,0],[1,-1,0,0]]
-    return t
+    h = [[2,-3,0,1],[-2,3,0,0],[1,-2,1,0],[1,-1,0,0]]
+    return h
 
 def generate_curve_coefs( p1, p2, p3, p4, t ):
     p = [[p1,p2,p3,p4]]
