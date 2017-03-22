@@ -25,9 +25,9 @@ def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
         x1 = coefx[0]*t**3 + coefx[1]*t**2 + coefx[2]*t + coefx[3]
         y1 = coefy[0]*t**3 + coefy[1]*t**2 + coefy[2]*t + coefy[3]
         add_edge(points, x0, y0, 0, x1, y1, 0)
-        t+=step
         x0 = x1
         y0 = y1
+        t+=step
 
 
 
