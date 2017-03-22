@@ -5,7 +5,7 @@ def add_circle( points, cx, cy, cz, r, step ):
     prevx = cx + r
     prevy = cy
     
-    t = step
+    t = 0
     while t <= 1.0001:
         x = r*(math.cos(2*math.pi*t))+cx
         y = r*(math.sin(2*math.pi*t))+cy
@@ -16,9 +16,8 @@ def add_circle( points, cx, cy, cz, r, step ):
     
 
 def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
-    coefx = generate_curve_coefs(x0, x1, x2, x3, curve_type)
-    coefy = generate_curve_coefs(y0, y1, y2, y3, curve_type)
-    #print prevy
+    coefx = generate_curve_coefs(x0, x1, x2, x3, curve_type)[0]
+    coefy = generate_curve_coefs(y0, y1, y2, y3, curve_type)[0]
     
     t = 0
     while t <= 1.0001:

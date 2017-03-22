@@ -9,8 +9,7 @@ def transpose(matrix):
 
 def make_bezier():
     b = [[-1,3,-3,1],[3,-6,3,0],[-3,3,0,0],[1,0,0,0]]
-    return b
-    
+    return b    
 
 def make_hermite():
     h = [[2,-3,0,1],[-2,3,0,0],[1,-2,1,0],[1,-1,0,0]]
@@ -21,15 +20,17 @@ def generate_curve_coefs( p1, p2, p3, p4, t ):
     if t == "hermite":
         #print_matrix(make_hermite())
         product = matrix_mult(make_hermite(),p)
-        print_matrix(product)
-        return product[0]
+        #print_matrix(product)
+        return product
     elif t == "bezier":
+        #print p
         product = matrix_mult(make_bezier(),p)
-        print_matrix(product)
-        return product[0]
+        #print p
+        #print_matrix(product)
+        return product
     else:
         print "CHECK INPUT"
-
+        
 def make_translate( x, y, z ):
     t = new_matrix()
     ident(t)
